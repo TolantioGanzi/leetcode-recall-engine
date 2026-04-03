@@ -110,7 +110,7 @@
                         <database>
                             <name>org.jooq.meta.h2.H2Database</name>
                             <inputSchema>PUBLIC</inputSchema>
-                            <includes>PROBLEMS</includes>
+                            <includes>PROBLEMS|RECALL_DB</includes>
                         </database>
 
                         <target>

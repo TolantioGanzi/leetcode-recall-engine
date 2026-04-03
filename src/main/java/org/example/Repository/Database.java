@@ -9,7 +9,7 @@ public class Database {
 
     // why is this static here?
     static {
-        dataSource.setURL("jdbc:h2:tcp://localhost/~/problems");
+        dataSource.setURL("jdbc:h2:tcp://localhost/~/problems_test");
         dataSource.setUser("sa");
         dataSource.setPassword("1234");
     }

@@ -25,6 +25,9 @@ public class CommandParser {
                     addAction.execute();
                     System.out.println("Problem added.");
                     break;
+                case "due":
+                    updateService.fetchDueService();
+                    break;
                 case "exit":
                     System.out.print("CLI closed");
                     System.exit(1);

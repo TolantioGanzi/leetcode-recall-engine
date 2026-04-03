@@ -12,6 +12,7 @@ public class AddParser implements Parser{
     };
 
     public AddAction parse(String command) {
+
         Scanner read = new Scanner(System.in);
         System.out.print("Enter Problem Number: ");
         int problemNumber = Integer.parseInt(read.nextLine());

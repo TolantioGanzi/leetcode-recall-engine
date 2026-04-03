@@ -5,9 +5,6 @@ import org.example.Model.Problem;
 import org.example.Repository.ProblemFactory;
 import org.example.Repository.ProblemRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UpdateService {
     private ProblemRepository problemRepo;
     private ProblemFactory factory;
@@ -15,14 +12,15 @@ public class UpdateService {
         this.problemRepo = problemRepo;
         this.factory = factory;
     }
-    public void addProblem(int problemNumber, String result) {
+
+    public void addService(int problemNumber, String result) {
         LeetcodeProblem leetProblem = problemRepo.getProblem(problemNumber);
         Problem problem = factory.userProblemBuilder(result, leetProblem);
         problemRepo.addProblem(problem);
     }
 
-    public void displayTodaysProblems() {
-        List<String> today = new ArrayList<>();
+    public void fetchDueService() {
+        problemRepo.fetchDueProblems();
     }
     public void removeProblem() {
 
