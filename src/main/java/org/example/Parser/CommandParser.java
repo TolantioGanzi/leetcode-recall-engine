@@ -28,6 +28,9 @@ public class CommandParser {
                 case "due":
                     updateService.fetchDueService();
                     break;
+                case "recall":
+
+                    break;
                 case "exit":
                     System.out.print("CLI closed");
                     System.exit(1);

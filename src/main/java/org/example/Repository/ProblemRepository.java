@@ -6,11 +6,9 @@ import org.jooq.impl.DSL;
 import java.sql.*;
 import java.time.LocalDate;
 import org.jooq.DSLContext;
-
 import javax.sql.DataSource;
 import static org.example.jooq.generated.tables.Problems.PROBLEMS;
 import static org.example.jooq.generated.tables.RecallDb.RECALL_DB;
-
 import org.example.jooq.generated.tables.records.ProblemsRecord;
 import org.example.jooq.generated.tables.records.RecallDbRecord;
 
@@ -52,14 +50,14 @@ public class ProblemRepository {
         }
     }
 
-    public LeetcodeProblem getProblem(int problemNumber)  {
+    public LeetcodeProblem getProblem(int problemID)  {
         try {
             Connection connection = dataSource.getConnection();
             DSLContext create = DSL.using(connection);
 
             ProblemsRecord problemRecord = create
                     .selectFrom(PROBLEMS)
-                    .where(PROBLEMS.PROBLEM_ID.eq(String.valueOf(problemNumber)))
+                    .where(PROBLEMS.PROBLEM_ID.eq(String.valueOf(problemID)))
                     .fetchOne();
 
             int problemId = Integer.parseInt(problemRecord.getProblemId());
@@ -93,9 +91,29 @@ public class ProblemRepository {
             throw new RuntimeException(e);
         }
     }
-    public void removeProblem() {
+
+    public Problem fetchRecallProblem(int problemID) {
+        try {
+            Connection connection = dataSource.getConnection();
+            DSLContext create = DSL.using(connection);
+
+            RecallDbRecord recallDbRecord = create
+                    .selectFrom(RECALL_DB)
+                    .where(RECALL_DB.ID.eq(problemID))
+                    .fetchOne();
+
+            int id = recallDbRecord.getId();
+            String title = recallDbRecord.getTitle();
+            String difficulty = recallDbRecord.getDifficulty();
+            String topics = recallDbRecord.getTopics();
+            //LocalDate recallDate = recallDbRecord.getNextRecall();
+            return new Problem(id, title, difficulty, topics, null);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void updateProblem(Problem problem) {
-    }
+    public void removeProblem() {}
+
+    public void updateProblem(Problem problem) {}
 }

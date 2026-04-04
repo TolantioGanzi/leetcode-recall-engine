@@ -18,25 +18,23 @@ public class Problem {
     public int step;
     private String title;
     private String pattern;
-    private String result;
     private String difficulty;
     private String topics;
+    private String result;
     public LocalDate dateAdded;
     private LocalDate nextRecall;
 
     public Problem() {}
 
 
-    public Problem(int id, String title, String result, String difficulty,
+    public Problem(int id, String title, String difficulty,
                    String topics, LocalDate nextRecall) {
 
         this.id = id;
         this.title = title;
-        this.result = result;
         this.difficulty = difficulty;
         this.topics = topics;
         this.nextRecall = nextRecall;
-
         this.step = 0;
         this.dateAdded = LocalDate.now();
 

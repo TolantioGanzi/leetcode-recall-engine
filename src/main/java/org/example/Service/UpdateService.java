@@ -22,13 +22,17 @@ public class UpdateService {
     public void fetchDueService() {
         problemRepo.fetchDueProblems();
     }
+    public void recallService(int problemID) {
+        Problem problem = problemRepo.fetchRecallProblem(problemID);
+
+    }
+
     public void removeProblem() {
 
     }
+
     public void updateProblem() {
 
     }
-    public void recallProblem() {
 
-    }
 }

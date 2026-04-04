@@ -5,8 +5,6 @@ import org.example.Model.Problem;
 import org.example.Service.ScheduleService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 // constructs proper problem object to be added to User Database
 public class ProblemFactory {
@@ -20,7 +18,7 @@ public class ProblemFactory {
         String topics = leetProblem.getTopics();
 
         ScheduleService scheduleService = new ScheduleService();
-        Problem problem = new Problem(id, title, result, difficulty, topics, nextRecall);
+        Problem problem = new Problem(id, title, difficulty, topics, nextRecall);
         scheduleService.getNextRecall(problem);
         return problem;
     }
