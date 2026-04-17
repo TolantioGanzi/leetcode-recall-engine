@@ -57,10 +57,10 @@ public class ProblemRepository {
 
             ProblemsRecord problemRecord = create
                     .selectFrom(PROBLEMS)
-                    .where(PROBLEMS.PROBLEM_ID.eq(String.valueOf(problemID)))
+                    .where(PROBLEMS.PROBLEM_ID.eq(problemID))
                     .fetchOne();
 
-            int problemId = Integer.parseInt(problemRecord.getProblemId());
+            int problemId = problemRecord.getProblemId();
             String problem_slug = problemRecord.getProblemSlug();
             String difficulty = problemRecord.getDifficulty();
             String topics = String.valueOf(problemRecord.getTopics());
@@ -106,7 +106,7 @@ public class ProblemRepository {
             String title = recallDbRecord.getTitle();
             String difficulty = recallDbRecord.getDifficulty();
             String topics = recallDbRecord.getTopics();
-            //LocalDate recallDate = recallDbRecord.getNextRecall();
+            //LocalDate recallDate = recallDbRecord.computeRecall();
             return new Problem(id, title, difficulty, topics, null);
         } catch (SQLException e) {
             throw new RuntimeException(e);

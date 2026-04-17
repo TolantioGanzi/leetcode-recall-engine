@@ -3,5 +3,5 @@ import org.example.Action.Action;
 
 
 public interface Parser {
-    Action parse(String command);
+    Action parse();
 }

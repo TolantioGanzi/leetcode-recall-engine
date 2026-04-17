@@ -3,6 +3,7 @@ import org.example.Parser.CommandParser;
 import org.example.Repository.Database;
 import org.example.Repository.ProblemFactory;
 import org.example.Repository.ProblemRepository;
+import org.example.Service.ScheduleService;
 import org.example.Service.UpdateService;
 
 import javax.sql.DataSource;
@@ -19,7 +20,8 @@ public class UserApplication {
         // inject dependencies
         ProblemFactory factory = new ProblemFactory();
         ProblemRepository problemRepo = new ProblemRepository(dataSource);
-        UpdateService updateService = new UpdateService(problemRepo, factory);
+        ScheduleService scheduleService = new ScheduleService();
+        UpdateService updateService = new UpdateService(scheduleService, factory, problemRepo);
         Scanner read = new Scanner(System.in);
         CommandParser mainParser = new CommandParser(updateService);
 
@@ -28,5 +30,4 @@ public class UserApplication {
         mainParser.parseCommand(message);
 
     }
-
 }

@@ -14,7 +14,7 @@ public class ScheduleService {
     private final List<Integer> intervals = new ArrayList<>(Arrays.asList(1, 3, 7, 14, 30));
 
 
-    public void getNextRecall(Problem problem) {
+    public void computeRecall(Problem problem) {
         // New Problems
         LocalDate dateAdded = problem.getDateAdded();
         if(problem.getStep() <= 0) {

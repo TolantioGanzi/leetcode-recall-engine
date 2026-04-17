@@ -15,25 +15,29 @@ public class CommandParser {
     public void parseCommand(String message) {
         System.out.println(message);
         Scanner read = new Scanner(System.in);
+
         while (true) {
             System.out.print("leetcode-cli>> ");
             String command = read.nextLine();
             switch (command.toLowerCase()) {
                 case "add":
                     AddParser addParser = new AddParser(updateService);
-                    Action addAction = addParser.parse(command);
+                    Action addAction = addParser.parse();
                     addAction.execute();
                     System.out.println("Problem added.");
                     break;
+
                 case "due":
                     updateService.fetchDueService();
                     break;
+
                 case "recall":
 
                     break;
                 case "exit":
                     System.out.print("CLI closed");
                     System.exit(1);
+
                 default:
                     System.out.println("Invalid command");
                     break;

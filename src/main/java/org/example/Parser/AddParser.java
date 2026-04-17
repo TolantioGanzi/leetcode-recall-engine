@@ -11,7 +11,7 @@ public class AddParser implements Parser{
         this.updateService = updateService;
     };
 
-    public AddAction parse(String command) {
+    public AddAction parse() {
 
         Scanner read = new Scanner(System.in);
         System.out.print("Enter Problem Number: ");
