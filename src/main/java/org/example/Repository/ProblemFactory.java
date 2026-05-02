@@ -19,7 +19,7 @@ public class ProblemFactory {
 
         ScheduleService scheduleService = new ScheduleService();
         Problem problem = new Problem(id, title, difficulty, topics, nextRecall);
-        scheduleService.computeRecall(problem);
+        scheduleService.computeNewRecall(problem);
         return problem;
     }
 }

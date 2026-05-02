@@ -32,7 +32,10 @@ public class CommandParser {
                     break;
 
                 case "recall":
-
+                    RecallParser recallParser = new RecallParser(updateService);
+                    Action recallAction = recallParser.parse();
+                    recallAction.execute();
+                    System.out.println("Recall Completed ");
                     break;
                 case "exit":
                     System.out.print("CLI closed");

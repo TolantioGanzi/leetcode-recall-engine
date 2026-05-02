@@ -31,9 +31,7 @@ public class UpdateService {
     // Recall Problem
     public void recallService(int problemID, String result) {
         Problem problem = problemRepo.fetchRecallProblem(problemID);
-        scheduleService.computeRecall(problem);
-        // Pass -> compute next recall date
-        // Fail -> Mark Problem as HARD (give it weight)
+        scheduleService.computeNextRecall(problem);
 
     }
 

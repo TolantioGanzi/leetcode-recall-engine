@@ -106,7 +106,7 @@ public class ProblemRepository {
             String title = recallDbRecord.getTitle();
             String difficulty = recallDbRecord.getDifficulty();
             String topics = recallDbRecord.getTopics();
-            //LocalDate recallDate = recallDbRecord.computeRecall();
+            //LocalDate recallDate = recallDbRecord.computeNewRecall();
             return new Problem(id, title, difficulty, topics, null);
         } catch (SQLException e) {
             throw new RuntimeException(e);
